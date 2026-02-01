@@ -1,0 +1,1 @@
+<meta name="description" content="A simple educational colour-prediction demo game created for learning and practice. Users guess colours for fun with no money, no betting, and no real rewards. This project is made only for educational and entertainment purposes.">
