@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colour Prediction Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #444;
+    }
+    .btn {
+      padding: 15px 40px;
+      margin: 10px;
+      font-size: 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+    }
+    #red { background: #e63946; }
+    #green { background: #2a9d8f; }
+    #blue { background: #457b9d; }
+    .box {
+      background: #fff;
+      padding: 20px;
+      width: 300px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<h1>Colour Prediction Game</h1>
+<div class="box">
+  <h2>Your Score: <span id="score">0</span></h2>
+
+  <button class="btn" id="red" onclick="predict('Red')">Red</button>
+  <button class="btn" id="green" onclick="predict('Green')">Green</button>
+  <button class="btn" id="blue" onclick="predict('Blue')">Blue</button>
+
+  <h3 id="result"></h3>
+  <h3 id="final"></h3>
+</div>
+
+<script>
+let score = localStorage.getItem("score") || 0;
+document.getElementById("score").innerText = score;
+
+function predict(userChoice) {
+  const colors = ["Red", "Green", "Blue"];
+  const result = colors[Math.floor(Math.random() * colors.length)];
+
+  document.getElementById("result").innerHTML = "Result: " + result;
+
+  if (userChoice === result) {
+    score = parseInt(score) + 10;
+    document.getElementById("final").innerHTML = "You Won +10 🎉";
+  } else {
+    score = parseInt(score) - 5;
+    document.getElementById("final").innerHTML = "You Lost -5 ❌";
+  }
+
+  localStorage.setItem("score", score);
+  document.getElementById("score").innerText = score;
+}
+</script>
+
+</body>
+</html>
